@@ -12,6 +12,9 @@
 
 (ns clj-fileutils.fileutils)
 
+(def temporary-name-prefix
+    "clojure-fileutils-")
+
 (defn print-slurp-exception
     "Print warning message to the standard output."
     ([filename]
@@ -48,4 +51,20 @@
     "Move or rename one file. On the same filesystem the rename should be atomic."
     [filename1 filename2]
     (mv-file filename1 filename2))
+
+(defn make-temporary-log-file-name
+    []
+    (let [basedir-name (new java.io.File (System/getProperty "java.io.tmpdir"))
+          base-name    temporary-name-prefix
+          temp-file    (java.io.File/createTempFile base-name ".log" basedir-name)]
+          (.getAbsolutePath temp-file)))
+
+(defn make-temporary-directory
+    "Make temporary directory that would reside in /tmp (at least on Linux)."
+    []
+    (let [basedir-name (System/getProperty "java.io.tmpdir")
+          base-name    (str temporary-name-prefix (System/currentTimeMillis))
+          temp-dir     (new java.io.File basedir-name base-name)]
+        (.mkdir temp-dir)
+        temp-dir))
 

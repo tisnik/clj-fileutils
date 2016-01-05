@@ -44,4 +44,8 @@
           file2 (new java.io.File filename2)]
           (.renameTo file1 file2)))
 
+(defn move-file
+    "Move or rename one file. On the same filesystem the rename should be atomic."
+    [filename1 filename2]
+    (mv-file filename1 filename2))
 

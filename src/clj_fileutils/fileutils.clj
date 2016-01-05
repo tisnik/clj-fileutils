@@ -30,4 +30,18 @@
             (slurp (str directory "/" filename))
             (catch Exception e (print-slurp-exception directory filename)))))
 
+(defn new-file
+    "Just a shortcut for (new java.io.File filename)."
+    ( [filename]
+    (new java.io.File filename))
+    ( [path filename]
+    (new java.io.File path filename)))
+
+(defn mv-file
+    "Move or rename one file. On the same filesystem the rename should be atomic."
+    [filename1 filename2]
+    (let [file1 (new java.io.File filename1)
+          file2 (new java.io.File filename2)]
+          (.renameTo file1 file2)))
+
 

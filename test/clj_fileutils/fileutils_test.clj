@@ -54,3 +54,13 @@
     (testing "if the clj-fileutils.fileutils/move-file function definition exists."
         (is (callable? 'clj-fileutils.fileutils/move-file))))
 
+(deftest test-make-temporary-log-file-name-existence
+    "Check that the clj-fileutils.fileutils/make-temporary-log-file-name function definition exists."
+    (testing "if the clj-fileutils.fileutils/make-temporary-log-file-name function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/make-temporary-log-file-name))))
+
+(deftest test-make-temporary-directory-existence
+    "Check that the clj-fileutils.fileutils/make-temporary-directory function definition exists."
+    (testing "if the clj-fileutils.fileutils/make-temporary-directory function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/make-temporary-directory))))
+

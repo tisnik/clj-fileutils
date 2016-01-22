@@ -14,6 +14,43 @@
   (:require [clojure.test :refer :all]
             [clj-fileutils.fileutils :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+
+;
+; Common functions used by tests.
+;
+
+(defn callable?
+    "Test if given function-name is bound to the real function."
+    [function-name]
+    (clojure.test/function? function-name))
+
+
+;
+; Actual tests.
+;
+
+(deftest test-print-slurp-exception-existence
+    "Check that the clj-fileutils.fileutils/print-slurp-exception function definition exists."
+    (testing "if the clj-fileutils.fileutils/print-slurp-exception function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/print-slurp-exception))))
+
+(deftest test-slurp-existence
+    "Check that the clj-fileutils.fileutils/slurp- function definition exists."
+    (testing "if the clj-fileutils.fileutils/slurp- function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/slurp-))))
+
+(deftest test-new-file-existence
+    "Check that the clj-fileutils.fileutils/new-file function definition exists."
+    (testing "if the clj-fileutils.fileutils/new-file function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/new-file))))
+
+(deftest test-mv-file-existence
+    "Check that the clj-fileutils.fileutils/mv-file function definition exists."
+    (testing "if the clj-fileutils.fileutils/mv-file function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/mv-file))))
+
+(deftest test-move-file-existence
+    "Check that the clj-fileutils.fileutils/move-file function definition exists."
+    (testing "if the clj-fileutils.fileutils/move-file function definition exists."
+        (is (callable? 'clj-fileutils.fileutils/move-file))))
+

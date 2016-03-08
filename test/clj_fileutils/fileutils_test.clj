@@ -108,3 +108,11 @@
             "abc/def"         (.toString (new-file "abc" "def"))
             "abc/abc.def"     (.toString (new-file "abc" "abc.def")))))
 
+(deftest test-new-file-negative
+    "Check the function clj-fileutils.fileutils/new-file."
+    (testing "Check the function clj-fileutils.fileutils/new-file."
+        (is (thrown? NullPointerException (new-file nil)))
+        (is (thrown? NullPointerException (new-file "" nil)))
+        (is (thrown? NullPointerException (new-file "abc" nil)))
+        (is (thrown? NullPointerException (new-file nil nil)))))
+

@@ -33,6 +33,22 @@ https://github.com/tisnik/clj-fileutils
 ## Usage
 
 
+## Leiningen targets
+
+The following Leiningen targets are supported by the current version of this module:
+
+### Run unit tests
+
+    lein test
+
+### Measure code coverage
+
+    lein cloverage
+
+### Generate or regenerate documentation
+
+    lein doc
+
 ## Options
 
 FIXME: listing of options this app accepts.

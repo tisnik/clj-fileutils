@@ -91,3 +91,13 @@
             "abc/def"     (.toString (new-file "abc/def" ""))
             "abc/def/xyz" (.toString (new-file "abc/def/xyz" "")))))
 
+(deftest test-new-file-3
+    "Check the function clj-fileutils.fileutils/new-file."
+    (testing "Check the function clj-fileutils.fileutils/new-file."
+        (are [x y] (= x y)
+            "/"            (.toString (new-file "" ""))
+            "/abc"         (.toString (new-file "" "abc"))
+            "/abc.def"     (.toString (new-file "" "abc.def"))
+            "/abc/def"     (.toString (new-file "" "abc/def"))
+            "/abc/def/xyz" (.toString (new-file "" "abc/def/xyz")))))
+

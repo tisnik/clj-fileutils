@@ -26,7 +26,7 @@
 
 
 ;
-; Actual tests.
+; Test for function definitions.
 ;
 
 (deftest test-print-slurp-exception-existence
@@ -63,4 +63,21 @@
     "Check that the clj-fileutils.fileutils/make-temporary-directory function definition exists."
     (testing "if the clj-fileutils.fileutils/make-temporary-directory function definition exists."
         (is (callable? 'clj-fileutils.fileutils/make-temporary-directory))))
+
+;
+; Actual tests.
+;
+
+(def msg-start
+    "Warning: cannot read content of the following file: ")
+
+(deftest test-new-file-1
+    "Check the function clj-fileutils.fileutils/new-file."
+    (testing "Check the function clj-fileutils.fileutils/new-file."
+        (are [x y] (= x y)
+            ""            (.toString (new-file ""))
+            "abc"         (.toString (new-file "abc"))
+            "abc.def"     (.toString (new-file "abc.def"))
+            "abc/def"     (.toString (new-file "abc/def"))
+            "abc/def/xyz" (.toString (new-file "abc/def/xyz")))))
 

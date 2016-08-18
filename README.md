@@ -14,20 +14,22 @@ from https://clojars.org/org.clojars.tisnik/clj-fileutils and integrate the
 source file into your project. Or simply clone the following GIT repository:
 https://github.com/tisnik/clj-fileutils
 
+[![Clojars Project](https://img.shields.io/clojars/v/org.clojars.tisnik/clj-fileutils.svg)](https://clojars.org/org.clojars.tisnik/clj-fileutils)
+
 ### Leiningen
 
-    [org.clojars.tisnik/clj-fileutils "0.1.0-SNAPSHOT"]
+    [org.clojars.tisnik/clj-fileutils "0.2.0-SNAPSHOT"]
 
 ### Gradle
 
-    compile "org.clojars.tisnik:clj-fileutils:clj-fileutils:0.1.0-SNAPSHOT"
+    compile "org.clojars.tisnik:clj-fileutils:clj-fileutils:0.2.0-SNAPSHOT"
 
 ### Maven
 
     <dependency>
         <groupId>org.clojars.tisnik</groupId>
         <artifactId>clj-fileutils</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.2.0-SNAPSHOT</version>
     </dependency>
 
 ## Usage

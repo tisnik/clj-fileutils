@@ -40,6 +40,16 @@
     ( [path filename]
     (new java.io.File path filename)))
 
+
+(defn remove-temporary-directory
+    "Remove (delete) temporary directory that resides in /tmp (at least on Linux)."
+    [directory-name]
+    (let [file (new java.io.File directory-name)
+          abs-path (.getAbsolutePath file)]
+        ; make sure we are not going to remove wrong directory!
+        (if (.startsWith abs-path "/tmp")
+            (exec/exec "/bin/rm -rf" abs-path))))
+
 (defn mv-file
     "Move or rename one file. On the same filesystem the rename should be atomic."
     [filename1 filename2]

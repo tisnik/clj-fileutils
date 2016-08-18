@@ -7,15 +7,16 @@
 ;  http://www.eclipse.org/legal/epl-v10.html
 ;
 ;  Contributors:
-;      Pavel Tisnovsky
+;      Pavel Tisnovsky
 ;
 
-(defproject org.clojars.tisnik/clj-fileutils "0.1.0-SNAPSHOT"
+(defproject org.clojars.tisnik/clj-fileutils "0.2.0-SNAPSHOT"
     :description "Set of functions for manipulating with files and directories."
     :url "http://example.com/FIXME"
     :license {:name "Eclipse Public License"
               :url "http://www.eclipse.org/legal/epl-v10.html"}
-    :dependencies [[org.clojure/clojure "1.6.0"]]
+    :dependencies [[org.clojure/clojure "1.7.0"]
+                   [clj-rm-rf "1.0.0-SNAPSHOT"]]
     :plugins [[test2junit "1.1.0"]
               [codox "0.8.11"]
               [lein-cloverage "1.0.6"]])

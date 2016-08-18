@@ -12,6 +12,8 @@
 
 (ns clj-fileutils.fileutils)
 
+(require '[hozumi.rm-rf    :as rm-rf])
+
 (def temporary-name-prefix
     "clojure-fileutils-")
 
@@ -48,7 +50,11 @@
           abs-path (.getAbsolutePath file)]
         ; make sure we are not going to remove wrong directory!
         (if (.startsWith abs-path "/tmp")
-            (exec/exec "/bin/rm -rf" abs-path))))
+            (rm-rf/rm-r abs-path))))
+
+(defn remove-directory
+    [directory]
+    (rm-rf/rm-r directory))
 
 (defn mv-file
     "Move or rename one file. On the same filesystem the rename should be atomic."

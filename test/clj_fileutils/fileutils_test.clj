@@ -136,7 +136,7 @@
             (if tempdir
                 (remove-temporary-directory (.getPath tempdir))))))
 
-(deftest test-make-temporary-log-file-name
+(deftest test-make-temporary-log-file-name-1
     "Check the function clj-fileutils.fileutils/make-temporary-log-file-name."
     (testing "Check the function clj-fileutils.fileutils/make-temporary-log-file-name."
         (let [templog (make-temporary-log-file-name)]
@@ -145,4 +145,25 @@
             (is (.startsWith templog "/tmp"))
             (if templog
                 (-> (new java.io.File templog) .delete)))))
+
+(deftest test-make-temporary-log-file-name-2
+    "Check the function clj-fileutils.fileutils/make-temporary-log-file-name."
+    (testing "Check the function clj-fileutils.fileutils/make-temporary-log-file-name."
+        (let [templog (make-temporary-log-file-name)]
+            (println "Temporary log file" templog)
+            (let [f (new java.io.File templog)]
+                (is (not (.isDirectory f)))
+                (is (.isFile f))
+                (if templog
+                    (.delete f))))))
+
+(deftest test-remove-directory
+    "Check the function clj-fileutils.fileutils/remove-directory."
+    (testing "Check the function clj-fileutils.fileutils/remove-directory."
+        (let [tempdir (make-temporary-directory)]
+            (println "Temporary directory to be deleted" tempdir)
+            (when (.isDirectory tempdir)
+                (is (.isDirectory tempdir))
+                (remove-directory tempdir)
+                (is (not (.isDirectory tempdir)))))))
 

@@ -7,7 +7,7 @@
 ;  http://www.eclipse.org/legal/epl-v10.html
 ;
 ;  Contributors:
-;      Pavel Tisnovsky
+;      Pavel Tisnovsky
 ;
 
 (ns clj-fileutils.fileutils)
@@ -50,7 +50,7 @@
           abs-path (.getAbsolutePath file)]
         ; make sure we are not going to remove wrong directory!
         (if (.startsWith abs-path "/tmp")
-            (rm-rf/rm-r abs-path))))
+            (rm-rf/rm-r file))))
 
 (defn remove-directory
     [directory]

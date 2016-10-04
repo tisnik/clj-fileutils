@@ -126,3 +126,13 @@
             (if tempdir
                 (remove-temporary-directory (.getPath tempdir))))))
 
+(deftest test-make-temporary-directory-2
+    "Check the function clj-fileutils.fileutils/make-temporary-directory."
+    (testing "Check the function clj-fileutils.fileutils/make-temporary-directory."
+        (let [tempdir (make-temporary-directory)]
+            (println "Temporary directory" tempdir)
+            (is (.isDirectory tempdir))
+            (is (not (.isFile tempdir)))
+            (if tempdir
+                (remove-temporary-directory (.getPath tempdir))))))
+

@@ -7,7 +7,7 @@
 ;  http://www.eclipse.org/legal/epl-v10.html
 ;
 ;  Contributors:
-;      Pavel Tisnovsky
+;      Pavel Tisnovsky
 ;
 
 (ns clj-fileutils.fileutils-test
@@ -115,4 +115,14 @@
         (is (thrown? NullPointerException (new-file "" nil)))
         (is (thrown? NullPointerException (new-file "abc" nil)))
         (is (thrown? NullPointerException (new-file nil nil)))))
+
+(deftest test-make-temporary-directory-1
+    "Check the function clj-fileutils.fileutils/make-temporary-directory."
+    (testing "Check the function clj-fileutils.fileutils/make-temporary-directory."
+        (let [tempdir (make-temporary-directory)]
+            (println "Temporary directory" tempdir)
+            (is (not (nil? tempdir)))
+            (is (.startsWith (.getPath tempdir) "/tmp"))
+            (if tempdir
+                (remove-temporary-directory (.getPath tempdir))))))
 

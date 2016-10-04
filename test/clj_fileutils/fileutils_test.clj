@@ -136,3 +136,13 @@
             (if tempdir
                 (remove-temporary-directory (.getPath tempdir))))))
 
+(deftest test-make-temporary-log-file-name
+    "Check the function clj-fileutils.fileutils/make-temporary-log-file-name."
+    (testing "Check the function clj-fileutils.fileutils/make-temporary-log-file-name."
+        (let [templog (make-temporary-log-file-name)]
+            (println "Temporary log file" templog)
+            (is (not (nil? templog)))
+            (is (.startsWith templog "/tmp"))
+            (if templog
+                (-> (new java.io.File templog) .delete)))))
+

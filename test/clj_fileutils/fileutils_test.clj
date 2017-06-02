@@ -181,3 +181,11 @@
             "test\n"     "test/test2.txt"
             "1\n2\n3\n"  "test/test3.txt")))
 
+(deftest test-slurp-2
+    "Check the function clj-fileutils.fileutils/slurp-."
+    (testing "Check the function clj-fileutils.fileutils/slurp-."
+        (are [x y z] (= x (slurp- y z))
+            ""           "test" "test1.txt"
+            "test\n"     "test" "test2.txt"
+            "1\n2\n3\n"  "test" "test3.txt")))
+

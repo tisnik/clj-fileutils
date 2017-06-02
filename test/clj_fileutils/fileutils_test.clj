@@ -176,7 +176,7 @@
 (deftest test-slurp-
     "Check the function clj-fileutils.fileutils/slurp-."
     (testing "Check the function clj-fileutils.fileutils/slurp-."
-        (are [x y] (= x (slurp- y))
+        (are [expected filename] (= expected (slurp- filename))
             ""           "test/test1.txt"
             "test\n"     "test/test2.txt"
             "1\n2\n3\n"  "test/test3.txt")))
@@ -184,8 +184,15 @@
 (deftest test-slurp-2
     "Check the function clj-fileutils.fileutils/slurp-."
     (testing "Check the function clj-fileutils.fileutils/slurp-."
-        (are [x y z] (= x (slurp- y z))
+        (are [expected directory filename] (= expected (slurp- directory filename))
             ""           "test" "test1.txt"
             "test\n"     "test" "test2.txt"
             "1\n2\n3\n"  "test" "test3.txt")))
+
+(deftest test-slurp-file-not-found
+    "Check the function clj-fileutils.fileutils/slurp-."
+    (testing "Check the function clj-fileutils.fileutils/slurp-."
+        (is (nil? (slurp- "unknown.txt")))
+        (is (nil? (slurp- "directory" "unknown.txt")))
+        (is (nil? (slurp- "test" "unknown.txt")))))
 

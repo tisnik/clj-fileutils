@@ -173,3 +173,11 @@
         (is (= (with-out-str (print-slurp-exception "test.txt")) "Warning: cannot read content of the following file: test.txt\n"))
         (is (= (with-out-str (print-slurp-exception "testdir" "test.txt")) "Warning: cannot read content of the following file: testdir/test.txt\n"))))
 
+(deftest test-slurp-
+    "Check the function clj-fileutils.fileutils/slurp-."
+    (testing "Check the function clj-fileutils.fileutils/slurp-."
+        (are [x y] (= x (slurp- y))
+            ""           "test/test1.txt"
+            "test\n"     "test/test2.txt"
+            "1\n2\n3\n"  "test/test3.txt")))
+

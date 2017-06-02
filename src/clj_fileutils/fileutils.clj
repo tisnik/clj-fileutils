@@ -22,7 +22,7 @@
     ([filename]
         (println "Warning: cannot read content of the following file:" filename))
     ([directory filename]
-        (println "Warning: cannot read content of the following file:" directory "/" filename)))
+        (println "Warning: cannot read content of the following file:" (str directory "/" filename))))
 
 (defn slurp-
     "Alternative (slurp) implementation that does not throw an exception, but returns nil instead."

@@ -1,5 +1,5 @@
 ;
-;  (C) Copyright 2015, 2016  Pavel Tisnovsky
+;  (C) Copyright 2015, 2016, 2017  Pavel Tisnovsky
 ;
 ;  All rights reserved. This program and the accompanying materials
 ;  are made available under the terms of the Eclipse Public License v1.0
@@ -166,4 +166,10 @@
                 (is (.isDirectory tempdir))
                 (remove-directory tempdir)
                 (is (not (.isDirectory tempdir)))))))
+
+(deftest test-print-slurp-exception
+    "Check the function clj-fileutils.fileutils/print-slurp-exception."
+    (testing "the function clj-fileutils.fileutils/print-slurp-exception."
+        (is (= (with-out-str (print-slurp-exception "test.txt")) "Warning: cannot read content of the following file: test.txt\n"))
+        (is (= (with-out-str (print-slurp-exception "testdir" "test.txt")) "Warning: cannot read content of the following file: testdir/test.txt\n"))))
 

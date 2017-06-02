@@ -20,9 +20,9 @@
 (defn print-slurp-exception
     "Print warning message to the standard output."
     ([filename]
-        (println "Warning: cannot read content of the following file: " filename))
+        (println "Warning: cannot read content of the following file:" filename))
     ([directory filename]
-        (println "Warning: cannot read content of the following file: " directory "/" filename)))
+        (println "Warning: cannot read content of the following file:" directory "/" filename)))
 
 (defn slurp-
     "Alternative (slurp) implementation that does not throw an exception, but returns nil instead."

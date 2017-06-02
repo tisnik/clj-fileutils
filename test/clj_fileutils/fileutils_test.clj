@@ -196,3 +196,15 @@
         (is (nil? (slurp- "directory" "unknown.txt")))
         (is (nil? (slurp- "test" "unknown.txt")))))
 
+(deftest test-move-file
+    "Check the function clj-fileutils.fileutils/move-file."
+    (testing "Check the function clj-fileutils.fileutils/move-file"
+        (spit "test_file1" "test")
+        (is (.isFile (new-file "test_file1")))
+        (is (not (.isFile (new-file "test_file2"))))
+        (move-file "test_file1" "test_file2")
+        (is (not (.isFile (new-file "test_file1"))))
+        (is (.isFile (new-file "test_file2")))
+        (.delete (new-file "test_file1"))
+        (.delete (new-file "test_file2"))))
+

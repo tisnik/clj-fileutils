@@ -1,5 +1,5 @@
 ;
-;  (C) Copyright 2015, 2016  Pavel Tisnovsky
+;  (C) Copyright 2015, 2016, 2017, 2018  Pavel Tisnovsky
 ;
 ;  All rights reserved. This program and the accompanying materials
 ;  are made available under the terms of the Eclipse Public License v1.0
@@ -83,4 +83,16 @@
           temp-dir     (new java.io.File basedir-name base-name)]
         (.mkdir temp-dir)
         temp-dir))
+
+(defn filelist
+    "Return list of files that resides in specified directory."
+    (   [directory]
+        (->> (.listFiles (new java.io.File directory))
+             (filter #(.isFile %))
+             (map #(.getName %))))
+    (   [directory extension]
+        (->> (.listFiles (new java.io.File directory))
+             (filter #(.isFile %))
+             (map #(.getName %))
+             (filter #(.endsWith % extension)))))
 

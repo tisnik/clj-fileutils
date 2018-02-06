@@ -1,5 +1,5 @@
 ;
-;  (C) Copyright 2015, 2016  Pavel Tisnovsky
+;  (C) Copyright 2015, 2016, 2017, 2018  Pavel Tisnovsky
 ;
 ;  All rights reserved. This program and the accompanying materials
 ;  are made available under the terms of the Eclipse Public License v1.0
@@ -10,7 +10,7 @@
 ;      Pavel Tisnovsky
 ;
 
-(defproject org.clojars.tisnik/clj-fileutils "0.2.0-SNAPSHOT"
+(defproject org.clojars.tisnik/clj-fileutils "0.3.0-SNAPSHOT"
     :description "Set of functions for manipulating with files and directories."
     :url "http://example.com/FIXME"
     :license {:name "Eclipse Public License"

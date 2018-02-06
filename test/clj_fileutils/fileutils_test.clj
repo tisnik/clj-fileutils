@@ -1,5 +1,5 @@
 ;
-;  (C) Copyright 2015, 2016, 2017  Pavel Tisnovsky
+;  (C) Copyright 2015, 2016, 2017, 2018  Pavel Tisnovsky
 ;
 ;  All rights reserved. This program and the accompanying materials
 ;  are made available under the terms of the Eclipse Public License v1.0
@@ -208,3 +208,29 @@
         (.delete (new-file "test_file1"))
         (.delete (new-file "test_file2"))))
 
+(deftest test-filelist
+    "Check the function clj-fileutils.fileutils/filelist"
+    (testing "Check the function clj-fileutils.fileutils/filelist"
+        (let [test-files (filelist "test")]
+            (is (some #{"test1.txt"} test-files))
+            (is (some #{"test2.txt"} test-files))
+            (is (some #{"test3.txt"} test-files))
+            (is (not (some #{"foobarbaz"} test-files))))))
+
+(deftest test-filelist-2
+    "Check the function clj-fileutils.fileutils/filelist"
+    (testing "Check the function clj-fileutils.fileutils/filelist"
+        (let [test-files (filelist "test" ".txt")]
+            (is (some #{"test1.txt"} test-files))
+            (is (some #{"test2.txt"} test-files))
+            (is (some #{"test3.txt"} test-files))
+            (is (not (some #{"foobarbaz"} test-files))))))
+
+(deftest test-filelist-3
+    "Check the function clj-fileutils.fileutils/filelist"
+    (testing "Check the function clj-fileutils.fileutils/filelist"
+        (let [test-files (filelist "test" ".baz")]
+            (is (not (some #{"test1.txt"} test-files)))
+            (is (not (some #{"test2.txt"} test-files)))
+            (is (not (some #{"test3.txt"} test-files)))
+            (is (not (some #{"foobarbaz"} test-files))))))

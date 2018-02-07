@@ -234,3 +234,34 @@
             (is (not (some #{"test2.txt"} test-files)))
             (is (not (some #{"test3.txt"} test-files)))
             (is (not (some #{"foobarbaz"} test-files))))))
+
+(deftest test-file-list
+    "Check the function clj-fileutils.fileutils/file-list"
+    (testing "Check the function clj-fileutils.fileutils/file-list"
+        (let [test-files (file-list "test")
+              filenames (map #(.getName %) test-files)]
+            (is (some #{"test1.txt"} filenames))
+            (is (some #{"test2.txt"} filenames))
+            (is (some #{"test3.txt"} filenames))
+            (is (not (some #{"foobarbaz"} filenames))))))
+
+(deftest test-file-list-2
+    "Check the function clj-fileutils.fileutils/filename-list"
+    (testing "Check the function clj-fileutils.fileutils/filename-list"
+        (let [test-files (file-list "test" ".txt")
+              filenames (map #(.getName %) test-files)]
+            (is (some #{"test1.txt"} filenames))
+            (is (some #{"test2.txt"} filenames))
+            (is (some #{"test3.txt"} filenames))
+            (is (not (some #{"foobarbaz"} filenames))))))
+
+(deftest test-file-list-3
+    "Check the function clj-fileutils.fileutils/filename-list"
+    (testing "Check the function clj-fileutils.fileutils/filename-list"
+        (let [test-files (file-list "test" ".baz")
+              filenames (map #(.getName %) test-files)]
+            (is (not (some #{"test1.txt"} filenames)))
+            (is (not (some #{"test2.txt"} filenames)))
+            (is (not (some #{"test3.txt"} filenames)))
+            (is (not (some #{"foobarbaz"} filenames))))))
+

@@ -208,28 +208,28 @@
         (.delete (new-file "test_file1"))
         (.delete (new-file "test_file2"))))
 
-(deftest test-filelist
-    "Check the function clj-fileutils.fileutils/filelist"
-    (testing "Check the function clj-fileutils.fileutils/filelist"
-        (let [test-files (filelist "test")]
+(deftest test-filename-list
+    "Check the function clj-fileutils.fileutils/filename-list"
+    (testing "Check the function clj-fileutils.fileutils/filename-list"
+        (let [test-files (filename-list "test")]
             (is (some #{"test1.txt"} test-files))
             (is (some #{"test2.txt"} test-files))
             (is (some #{"test3.txt"} test-files))
             (is (not (some #{"foobarbaz"} test-files))))))
 
-(deftest test-filelist-2
-    "Check the function clj-fileutils.fileutils/filelist"
-    (testing "Check the function clj-fileutils.fileutils/filelist"
-        (let [test-files (filelist "test" ".txt")]
+(deftest test-filename-list-2
+    "Check the function clj-fileutils.fileutils/filename-list"
+    (testing "Check the function clj-fileutils.fileutils/filename-list"
+        (let [test-files (filename-list "test" ".txt")]
             (is (some #{"test1.txt"} test-files))
             (is (some #{"test2.txt"} test-files))
             (is (some #{"test3.txt"} test-files))
             (is (not (some #{"foobarbaz"} test-files))))))
 
-(deftest test-filelist-3
-    "Check the function clj-fileutils.fileutils/filelist"
-    (testing "Check the function clj-fileutils.fileutils/filelist"
-        (let [test-files (filelist "test" ".baz")]
+(deftest test-filename-list-3
+    "Check the function clj-fileutils.fileutils/filename-list"
+    (testing "Check the function clj-fileutils.fileutils/filename-list"
+        (let [test-files (filename-list "test" ".baz")]
             (is (not (some #{"test1.txt"} test-files)))
             (is (not (some #{"test2.txt"} test-files)))
             (is (not (some #{"test3.txt"} test-files)))

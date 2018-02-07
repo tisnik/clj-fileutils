@@ -84,8 +84,8 @@
         (.mkdir temp-dir)
         temp-dir))
 
-(defn filelist
-    "Return list of files that resides in specified directory."
+(defn filename-list
+    "Return list of file names that resides in specified directory."
     (   [directory]
         (->> (.listFiles (new java.io.File directory))
              (filter #(.isFile %))

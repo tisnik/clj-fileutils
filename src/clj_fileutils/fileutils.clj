@@ -96,3 +96,13 @@
              (map #(.getName %))
              (filter #(.endsWith % extension)))))
 
+(defn file-list
+    "Return list of files that resides in specified directory."
+    (   [directory]
+        (->> (.listFiles (new java.io.File directory))
+             (filter #(.isFile %))))
+    (   [directory extension]
+        (->> (.listFiles (new java.io.File directory))
+             (filter #(.isFile %))
+             (filter #(.endsWith (.getName %) extension)))))
+

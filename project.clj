@@ -10,7 +10,7 @@
 ;      Pavel Tisnovsky
 ;
 
-(defproject org.clojars.tisnik/clj-fileutils "0.3.0-SNAPSHOT"
+(defproject org.clojars.tisnik/clj-fileutils "0.4.0-SNAPSHOT"
     :description "Set of functions for manipulating with files and directories."
     :url "http://example.com/FIXME"
     :license {:name "Eclipse Public License"

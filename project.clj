@@ -19,4 +19,4 @@
                    [clj-rm-rf "1.0.0-SNAPSHOT"]]
     :plugins [[test2junit "1.1.0"]
               [codox "0.8.11"]
-              [lein-cloverage "1.0.6"]])
+              [lein-cloverage "1.0.7-SNAPSHOT"]])

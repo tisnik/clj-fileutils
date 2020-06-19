@@ -45,6 +45,16 @@
   (testing "if the clj-fileutils.fileutils/new-file function definition exists."
            (is (callable? 'clj-fileutils.fileutils/new-file))))
 
+(deftest test-remove-temporary-directory-existence
+  "Check that the clj-fileutils.fileutils/remove-temporary-directory function definition exists."
+  (testing "if the clj-fileutils.fileutils/remove-temporary-directory function definition exists."
+           (is (callable? 'clj-fileutils.fileutils/remove-temporary-directory))))
+
+(deftest test-remove-directory-existence
+  "Check that the clj-fileutils.fileutils/remove-directory function definition exists."
+  (testing "if the clj-fileutils.fileutils/remove-directory function definition exists."
+           (is (callable? 'clj-fileutils.fileutils/remove-directory))))
+
 (deftest test-mv-file-existence
   "Check that the clj-fileutils.fileutils/mv-file function definition exists."
   (testing "if the clj-fileutils.fileutils/mv-file function definition exists."
@@ -68,6 +78,16 @@
     "if the clj-fileutils.fileutils/make-temporary-directory function definition exists."
     (is (callable? 'clj-fileutils.fileutils/make-temporary-directory))))
 
+(deftest test-filename-list-existence
+  "Check that the clj-fileutils.fileutils/filename-list function definition exists."
+  (testing "if the clj-fileutils.fileutils/filename-list function definition exists."
+           (is (callable? 'clj-fileutils.fileutils/filename-list))))
+
+(deftest test-file-list-existence
+  "Check that the clj-fileutils.fileutils/file-list function definition exists."
+  (testing "if the clj-fileutils.fileutils/file-list function definition exists."
+           (is (callable? 'clj-fileutils.fileutils/file-list))))
+
 ;
 ; Actual tests.
 ;
@@ -79,6 +99,8 @@
   "Check the function clj-fileutils.fileutils/new-file."
   (testing "Check the function clj-fileutils.fileutils/new-file."
            (are [x y] (= x y)
+                ; new-file just constructs new instance of File object
+                ; variant with just filename, not a directory
                 ""            (.toString (new-file ""))
                 "abc"         (.toString (new-file "abc"))
                 "abc.def"     (.toString (new-file "abc.def"))
@@ -89,6 +111,8 @@
   "Check the function clj-fileutils.fileutils/new-file."
   (testing "Check the function clj-fileutils.fileutils/new-file."
            (are [x y] (= x y)
+                ; new-file just constructs new instance of File object
+                ; now directory is not empty, but filename is
                 "/"           (.toString (new-file "" ""))
                 "abc"         (.toString (new-file "abc" ""))
                 "abc.def"     (.toString (new-file "abc.def" ""))
@@ -99,6 +123,8 @@
   "Check the function clj-fileutils.fileutils/new-file."
   (testing "Check the function clj-fileutils.fileutils/new-file."
            (are [x y] (= x y)
+                ; new-file just constructs new instance of File object
+                ; now directory is empty
                 "/"            (.toString (new-file "" ""))
                 "/abc"         (.toString (new-file "" "abc"))
                 "/abc.def"     (.toString (new-file "" "abc.def"))
@@ -109,6 +135,8 @@
   "Check the function clj-fileutils.fileutils/new-file."
   (testing "Check the function clj-fileutils.fileutils/new-file."
            (are [x y] (= x y)
+                ; new-file just constructs new instance of File object
+                ; both directory and filename are not empty
                 "abc/def"         (.toString (new-file "abc" "def"))
                 "abc/abc.def"     (.toString (new-file "abc" "abc.def")))))
 
@@ -128,6 +156,7 @@
       (println "Temporary directory" tempdir)
       (is (not (nil? tempdir)))
       (is (.startsWith (.getPath tempdir) "/tmp"))
+      ; perform regular cleanup after previous block is executed
       (if tempdir
         (remove-temporary-directory (.getPath tempdir))))))
 
@@ -139,6 +168,7 @@
       (println "Temporary directory" tempdir)
       (is (.isDirectory tempdir))
       (is (not (.isFile tempdir)))
+      ; perform regular cleanup after previous block is executed
       (if tempdir
         (remove-temporary-directory (.getPath tempdir))))))
 
@@ -150,6 +180,7 @@
       (println "Temporary log file" templog)
       (is (not (nil? templog)))
       (is (.startsWith templog "/tmp"))
+      ; perform regular cleanup after previous block is executed
       (if templog
         (-> (new java.io.File templog)
             .delete)))))
@@ -163,6 +194,7 @@
       (let [f (new java.io.File templog)]
         (is (not (.isDirectory f)))
         (is (.isFile f))
+        ; perform regular cleanup after previous block is executed
         (if templog
           (.delete f))))))
 
@@ -218,6 +250,7 @@
            (move-file "test_file1" "test_file2")
            (is (not (.isFile (new-file "test_file1"))))
            (is (.isFile (new-file "test_file2")))
+           ; perform regular cleanup after previous block is executed
            (.delete (new-file "test_file1"))
            (.delete (new-file "test_file2"))))
 

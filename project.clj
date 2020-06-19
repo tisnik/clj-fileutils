@@ -11,12 +11,12 @@
 ;
 
 (defproject org.clojars.tisnik/clj-fileutils "0.4.0-SNAPSHOT"
-    :description "Set of functions for manipulating with files and directories."
-    :url "http://example.com/FIXME"
-    :license {:name "Eclipse Public License"
-              :url "http://www.eclipse.org/legal/epl-v10.html"}
-    :dependencies [[org.clojure/clojure "1.8.0"]
-                   [clj-rm-rf "1.0.0-SNAPSHOT"]]
-    :plugins [[test2junit "1.1.0"]
-              [codox "0.8.11"]
-              [lein-cloverage "1.0.7-SNAPSHOT"]])
+  :description "Set of functions for manipulating with files and directories."
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License",
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [clj-rm-rf "1.0.0-SNAPSHOT"]]
+  :plugins [[test2junit "1.1.0"]
+            [codox "0.8.11"]
+            [lein-cloverage "1.0.7-SNAPSHOT"]])
